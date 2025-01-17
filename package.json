@@ -1,0 +1,19 @@
+{
+  "name": "pinterest-proyecto3",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "@babel/preset-react": "^7.24.7",
+    "@vitejs/plugin-react": "^4.3.1",
+    "vite": "^5.4.1"
+  },
+  "dependencies": {
+    "masonry-layout": "^4.2.2"
+  }
+}

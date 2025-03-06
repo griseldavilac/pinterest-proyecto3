@@ -7,31 +7,33 @@ export const Header = () => {
 
   // Imagen del logo
   const logo = document.createElement('img')
-  logo.src = '/assets/pinterest-logo.png' // Ruta original
+  logo.src = '/assets/pinterest-logo.png'
   logo.alt = 'Pinterest'
   logoContainer.appendChild(logo)
+
+  // Botón del menú hamburguesa
+  const menuToggle = document.createElement('button')
+  menuToggle.classList.add('menu-toggle')
+  menuToggle.innerHTML = '☰'
 
   // Navegación
   const nav = document.createElement('nav')
   const ul = document.createElement('ul')
-  ul.classList.add('nav-list') // MODIFICACION 1: Añadir clase para responsividad
+  ul.classList.add('nav-list')
   const navItems = ['Inicio', 'Explorar', 'Crear']
 
   navItems.forEach((item) => {
     const li = document.createElement('li')
-    li.classList.add('nav-item') // MODIFICACION 2: Clases para mejorar el responsive
+    li.classList.add('nav-item')
     const a = document.createElement('a')
     a.href = '#'
     a.textContent = item
-    if (item === 'Inicio') {
-      a.classList.add('active')
-    }
     li.appendChild(a)
     ul.appendChild(li)
   })
   nav.appendChild(ul)
 
-  // Barra de búsqueda con ajuste responsivo
+  // Barra de búsqueda
   const searchBar = document.createElement('div')
   searchBar.classList.add('search-bar')
 
@@ -39,17 +41,21 @@ export const Header = () => {
   input.type = 'text'
   input.placeholder = 'Buscar imágenes...'
   input.id = 'searchInput'
-  input.classList.add('search-input') // MODIFICACION 3: Clases para responsividad
 
   const button = document.createElement('button')
   button.id = 'searchBtn'
   button.textContent = 'Buscar'
-  button.classList.add('search-button') // MODIFICACION 4: Ajustes para mejor UX
 
   searchBar.appendChild(input)
   searchBar.appendChild(button)
 
+  // Evento para abrir/cerrar el menú en móviles
+  menuToggle.addEventListener('click', () => {
+    ul.classList.toggle('show')
+  })
+
   header.appendChild(logoContainer)
+  header.appendChild(menuToggle)
   header.appendChild(nav)
   header.appendChild(searchBar)
 

@@ -1,33 +1,32 @@
-// Componente para crear una tarjeta de imagen
 export const ImageCard = (imageData) => {
-  // Creamos el div principal que contendrá la tarjeta
+  // Creamos el div principal de la tarjeta
   const card = document.createElement('div')
-  card.classList.add('card') // Le añadimos la clase 'card' para su estilo
+  card.classList.add('card')
 
-  // Añadimos la imagen a la tarjeta
+  // Imagen principal
   const img = document.createElement('img')
-  img.src = imageData.urls.regular // Establecemos la URL de la imagen en su tamaño regular
-  img.alt = imageData.alt_description || 'Imagen de Unsplash' // Texto alternativo, si está disponible
-  card.appendChild(img) // Agregamos la imagen al contenedor de la tarjeta
+  img.src = imageData.urls.regular
+  img.alt = imageData.alt_description || 'Imagen de Unsplash'
+  card.appendChild(img)
 
-  // Creamos el contenedor para la información del usuario
+  // Contenedor de la info del usuario
   const userInfo = document.createElement('div')
-  userInfo.classList.add('user-info') // Clase para darle estilo
+  userInfo.classList.add('user-info')
 
-  // Añadimos la imagen de perfil del usuario
+  // Imagen de perfil del usuario con tamaño uniforme
   const userImg = document.createElement('img')
-  userImg.src = imageData.user.profile_image.medium // Imagen de perfil del usuario
-  userImg.alt = imageData.user.name // Texto alternativo para la imagen de perfil
-  userInfo.appendChild(userImg) // Agregamos la imagen de perfil al contenedor de la información del usuario
+  userImg.src = imageData.user.profile_image.medium
+  userImg.alt = imageData.user.name
+  userImg.classList.add('user-img') // Se le da una clase para tamaño uniforme
 
-  // Añadimos el nombre del usuario
+  userInfo.appendChild(userImg)
+
+  // Nombre del usuario
   const userName = document.createElement('span')
-  userName.textContent = imageData.user.name // Nombre del usuario
-  userInfo.appendChild(userName) // Agregamos el nombre al contenedor de la información del usuario
+  userName.textContent = imageData.user.name
+  userInfo.appendChild(userName)
 
-  // Finalmente, añadimos el contenedor de la información del usuario a la tarjeta
   card.appendChild(userInfo)
 
-  // Devolvemos la tarjeta completa con la imagen y la información del usuario
   return card
 }

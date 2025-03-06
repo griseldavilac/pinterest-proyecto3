@@ -22,7 +22,6 @@ body {
   margin: 0;
   padding: 0;
   overflow-x: hidden;
-  overflow-y: auto;
 }
 
 /* HEADER */
@@ -35,14 +34,18 @@ header {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   height: 80px;
   width: 100%;
-  flex-wrap: wrap;
+  position: fixed;
+  top: 0;
+  z-index: 1000;
 }
 
+/* LOGO */
 .logo {
   width: 50px;
   height: 50px;
 }
 
+/* MENÚ DE NAVEGACIÓN (VERSIÓN ESCRITORIO) */
 .nav-list {
   display: flex;
   list-style: none;
@@ -56,7 +59,7 @@ header {
   font-size: 16px;
 }
 
-/* BARRA DE BUSQUEDA */
+/* BARRA DE BÚSQUEDA */
 .search-bar {
   display: flex;
   align-items: center;
@@ -86,7 +89,7 @@ header {
   margin-left: 10px;
 }
 
-/* MODIFICACION: Aplicar CSS Grid correctamente en #gallery */
+/* GALERÍA DE IMÁGENES */
 #gallery {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
@@ -96,6 +99,7 @@ header {
   max-width: 100vw;
 }
 
+/* TARJETA DE IMAGEN */
 .card {
   display: flex;
   flex-direction: column;
@@ -108,8 +112,63 @@ header {
   display: block;
 }
 
-/* RESPONSIVE: Ajuste en móviles */
+/* PERFIL DEL USUARIO BAJO LAS IMÁGENES */
+.user-info {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 5px;
+}
+
+.user-info img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.user-info span {
+  font-size: 14px;
+  font-weight: bold;
+}
+
+/* SCROLL INFINITO */
+body {
+  overflow-y: auto;
+}
+
+/* 🔹 MENÚ HAMBURGUESA SOLO EN MÓVILES */
+.menu-toggle {
+  display: none;
+  font-size: 24px;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+/* 🔹 MEDIA QUERIES PARA MÓVILES */
 @media (max-width: 768px) {
+  .nav-list {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 80px;
+    right: 10px;
+    background: var(--color-bg);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    padding: 10px;
+  }
+
+  .nav-list.show {
+    display: flex;
+  }
+
+  .menu-toggle {
+    display: block;
+  }
+
+  /* Ajuste de la galería en pantallas pequeñas */
   #gallery {
     grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
   }

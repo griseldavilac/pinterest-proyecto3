@@ -7,7 +7,7 @@ export const Header = () => {
 
   // Imagen del logo
   const logo = document.createElement('img')
-  logo.src = './assets/Pinterest-logo.png' // CORRECCIÓN: Ruta corregida
+  logo.src = './Pinterest-logo.png' // CORRECCIÓN: Ruta corregida
   logo.alt = 'Pinterest'
   logoContainer.appendChild(logo)
 
